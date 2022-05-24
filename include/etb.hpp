@@ -1,13 +1,12 @@
 #ifndef ETB_HPP
 #define ETB_HPP
 
+#include "cp.hpp"
+#include "defines.hpp"
+
 #include <iostream>
 #include <array>
 #include <cstdlib>
-
-#include "cp.hpp"
-
-#define CP 8
 
 class Etb: public Cp
 {
