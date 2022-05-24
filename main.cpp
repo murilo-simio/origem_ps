@@ -1,23 +1,24 @@
 #include <iostream>
 
+#include "include/cp.hpp"
 #include "include/bateria.hpp"
 #include "include/moto.hpp"
 #include "include/etb.hpp"
 
 int main(){
-    // Bateria b1 = Bateria();
-    // Bateria b2 = Bateria(3.95);
-    // Bateria b3 = Bateria(4.25, 1);
+    Bateria b1 = Bateria();
+    Bateria b2 = Bateria(3.95);
+    Bateria b3 = Bateria(4.25, 1);
 
-    // float a,b,c;
+    float a,b,c;
 
-    // b=b2.getSoc();
-    // c=b3.getSoc();
+    b=b2.getSoc();
+    c=b3.getSoc();
 
-    // std::cout<< b << " "<< c << std::endl;
-    // b2.setSoc(16);
-    // b=b2.getSoc();
-    // std::cout<< b << " "<< c << std::endl;
+    std::cout<< b << " "<< c << std::endl;
+    b2.setSoc(16);
+    b=b2.getSoc();
+    std::cout<< b << " "<< c << std::endl;
 
     // Moto moto = Moto(3.95);
     // std::cout<<moto.getSoc()<<std::endl;

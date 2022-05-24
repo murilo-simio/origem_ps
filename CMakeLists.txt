@@ -4,7 +4,7 @@ project(origem_ps VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_library(origem_ps origem_ps.cpp)
+add_executable(origem_ps main.cpp src/libs/bateria.cpp src/libs/cp.cpp src/libs/etb.cpp src/libs/moto.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
