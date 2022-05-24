@@ -2,18 +2,18 @@
 #define MOTO_HPP
 
 #include "bateria.hpp"
+#include "defines.hpp"
 
 #include <string>
 #include <cstdlib>
 
-#define MAX_SPEED 60
 
 class Moto: public Bateria
 {
 private:
     bool state; // 0 - Standby, 1 - On
     std::string plate;
-    int speed;
+    float speed;
     Bateria bateria;
 public:
     Moto(float carga);
@@ -21,8 +21,9 @@ public:
     bool getState();
     void setPlate();
     std::string getPlate();
-    void setSpeed(int value);
-    int getSpeed();
+    void setSpeed(float value);
+    float getSpeed();
+    float calculaVel(bool acell);
 };
 
 #endif // MOTO_HPP

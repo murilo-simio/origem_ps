@@ -25,10 +25,27 @@ std::string Moto::getPlate(){
     return plate;
 }
 
-void Moto::setSpeed(int value){
-    speed = value;
+void Moto::setSpeed(float value){
+    if(value < MAX_SPEED || value > 0){
+        speed = value;
+    }else if(value > MAX_SPEED){
+        speed = MAX_SPEED;
+    }else{
+        speed = 0;
+    }
 }
 
-int Moto::getSpeed(){
+float Moto::getSpeed(){
     return speed;
+}
+
+float Moto::calculaVel(bool acell){
+    float veloc = getSpeed();
+    if(acell){
+        veloc += 0.2;
+    }else{
+        veloc -= 2;
+    }
+    setSpeed(veloc);
+    return getSpeed();
 }

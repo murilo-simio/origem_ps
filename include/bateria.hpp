@@ -1,7 +1,9 @@
 #ifndef BATERIA_HPP
 #define BATERIA_HPP
 
+#include "defines.hpp"
 #include <cstdlib>
+#include <cmath>
 
 class Bateria
 {
@@ -22,6 +24,7 @@ public:
     long long int getUid();
     void setSoc(float value);
     float getSoc();
+    float calculaSoc(float carga, int host, float veloc = 0.0);
 };
 
 #endif  // BATERIA_HPP
