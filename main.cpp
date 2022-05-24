@@ -1,34 +1,31 @@
-#include <iostream>
-
 #include "include/cp.hpp"
 #include "include/bateria.hpp"
 #include "include/moto.hpp"
 #include "include/etb.hpp"
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
+void printMotoInfo(string plate, float veloc, long long int batt, float carga);
 
 int main(){
-    Bateria b1 = Bateria();
-    Bateria b2 = Bateria(3.95);
-    Bateria b3 = Bateria(4.25, 1);
 
-    float a,b,c;
+    Moto moto = Moto(85.00);
+    moto.setSpeed(40.0);
 
-    b=b2.getSoc();
-    c=b3.getSoc();
+    moto.setSoc(moto.calculaSoc(moto.getSoc(), moto.getHost(), moto.calculaVel(true)));
+    moto.setSoc(moto.calculaSoc(moto.getSoc(), moto.getHost(), moto.calculaVel(true)));
+    moto.setSoc(moto.calculaSoc(moto.getSoc(), moto.getHost(), moto.calculaVel(true)));
 
-    std::cout<< b << " "<< c << std::endl;
-    b2.setSoc(16);
-    b=b2.getSoc();
-    std::cout<< b << " "<< c << std::endl;
-
-    // Moto moto = Moto(3.95);
-    // std::cout<<moto.getSoc()<<std::endl;
-
-    // std::cout<<moto.Bateria::getState()<<std::endl;
-    // std::cout<<b2.Bateria::getState()<<std::endl;
-    
-    Etb testa = Etb();
-    testa.getCp();
-    std::cout<< testa.getCp(2);
+    printMotoInfo(moto.getPlate(), moto.getSpeed(), moto.getUid(), moto.getSoc());
 
     return 0;
+}
+
+void printMotoInfo(string plate, float veloc, long long int batt, float carga){
+    cout << "Motorcycle plate: " << plate << endl;
+    cout << "Speed: " << veloc << endl;
+    cout << "Attached battery UID: " << batt << endl;
+    cout << "Motorcycle battery SoC: " << carga << "%" << endl;
 }
