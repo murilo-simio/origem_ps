@@ -26,12 +26,12 @@ std::string Moto::getPlate(){
 }
 
 void Moto::setSpeed(float value){
-    if(value < MAX_SPEED || value > 0){
-        speed = value;
-    }else if(value > MAX_SPEED){
+    if(value > MAX_SPEED){
         speed = MAX_SPEED;
-    }else{
+    }else if(value < 0){
         speed = 0;
+    }else{
+        speed = value;
     }
 }
 
@@ -39,13 +39,19 @@ float Moto::getSpeed(){
     return speed;
 }
 
-float Moto::calculaVel(bool acell){
+float Moto::calculaVel(bool acell, int seg){
     float veloc = getSpeed();
+    
     if(acell){
-        veloc += 0.2;
+        for (int i=0;i<seg;i++) {
+            veloc += 0.2;
+        }
     }else{
-        veloc -= 2;
+        for (int i=0;i<seg;i++) {
+            veloc -= 2;
+        }
     }
+    
     setSpeed(veloc);
     return getSpeed();
 }

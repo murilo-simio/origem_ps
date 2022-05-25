@@ -52,14 +52,15 @@ float Bateria::getSoc(){
     return soc;
 }
 
-float Bateria::calculaSoc(float carga, int host, float veloc){
-    float x;
+float Bateria::calculaSoc(int host, float veloc){
+    float x = getSoc();
     if(host == 0){
-        x = carga + 0.05;
+        x += 0.05;
     }else if(veloc){
-        x = carga - 0.01 - (pow((veloc/MAX_SPEED),2) * 0.05);
+        x = x - 0.01 - (pow((veloc/MAX_SPEED),2) * 0.05);
     }else{
-        x = carga - 0.01;
+        x -= 0.01;
     }
-    return x;
-};
+    setSoc(x);
+    return getSoc();
+}

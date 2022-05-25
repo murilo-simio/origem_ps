@@ -23,7 +23,7 @@ public:
     std::string getPlate();
     void setSpeed(float value);
     float getSpeed();
-    float calculaVel(bool acell);
+    float calculaVel(bool acell, int seg = 1);
 };
 
 #endif // MOTO_HPP

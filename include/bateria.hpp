@@ -24,7 +24,7 @@ public:
     long long int getUid();
     void setSoc(float value);
     float getSoc();
-    float calculaSoc(float carga, int host, float veloc = 0.0);
+    float calculaSoc(int host, float veloc = 0.0);
 };
 
 #endif  // BATERIA_HPP
