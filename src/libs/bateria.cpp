@@ -45,7 +45,13 @@ long long int Bateria::getUid(){
 }
 
 void Bateria::setSoc(float value){
-    soc = value;
+    if (value < 0) {
+        soc = 0;
+    }else if (soc > 100){
+        soc = 100;
+    }else{
+        soc = value;
+    }
 }
 
 float Bateria::getSoc(){

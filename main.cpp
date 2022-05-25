@@ -8,7 +8,7 @@
 using namespace std;
 
 void printMotoInfo(Moto motoI);
-void printEtbInfo(int id, long long int uid, float soc, bool charg);
+void printEtbInfo(Cp ponto, int id, Bateria batt);
 Moto motoUpdate(Moto motoI, bool accel);
 
 int timer = 0;
@@ -18,6 +18,16 @@ int main(){
     Moto moto = Moto(85.00);
 
     Etb station = Etb();
+
+    Bateria bat1 = Bateria(59.0);
+    Bateria bat2 = Bateria(100.0);
+
+    station.toAttach(1, bat1);
+    station.toAttach(2, bat2);
+    station.chargeBatt(1, bat1);
+    station.chargeBatt(2, bat2);
+    printEtbInfo(station.getCp(1), 1, bat1);
+    printEtbInfo(station.getCp(2), 2, bat2);
 
     int ciclo = 0, segundos = 0;
 
@@ -61,8 +71,14 @@ void printMotoInfo(Moto motoI){
     cout << "Motorcycle battery SoC: " << motoI.getSoc() << "%" << endl;
 }
 
-void printEtbInfo(int id, long long int uid, float soc, bool charg){
-    cout << "CP " << id << ": " << uid << " | " << soc << "| charging: " << charg << endl;
+void printEtbInfo(Cp ponto, int id, Bateria batt){
+    cout << "[CP " << id << ": " << ponto.getBattery() << " | ";
+    cout << batt.getSoc() << "% | charging: ";
+    if (ponto.getState()){
+        cout << "YES" << endl;
+    }else{
+        cout << "NO]" << endl;
+    }
 }
 
 Moto motoUpdate(Moto motoI, bool accel){

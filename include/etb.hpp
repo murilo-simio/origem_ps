@@ -1,14 +1,16 @@
 #ifndef ETB_HPP
 #define ETB_HPP
 
+#include "bateria.hpp"
 #include "cp.hpp"
 #include "defines.hpp"
 
 #include <iostream>
 #include <array>
 #include <cstdlib>
+#include <cmath>
 
-class Etb: public Cp
+class Etb: public Cp, public Bateria
 {
 private:
     long int uid;
@@ -17,8 +19,13 @@ public:
     Etb();
     void setUid();
     long int getUid();
-    void getCp();
-    bool getCp(int value);
+    Cp getCp(int value);
+    void toAttach(int id, Bateria batt);
+    void chargeBatt(int id, Bateria batt);
+    void toDetach(int id, Bateria batt);
+    int countBatt();
+    int countCharg();
+    int timeToCharge(Bateria batt);
 };
 
 #endif // ETB_HPP
