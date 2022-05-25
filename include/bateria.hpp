@@ -16,7 +16,7 @@ public:
     Bateria();
     Bateria(float carga);
     Bateria(float carga, int local);
-    void setState();
+    void setState(bool x);
     bool getState();
     void setHost(int moto);
     int getHost();

@@ -19,23 +19,26 @@ Cp Etb::getCp(int value){
     return cp[value];
 }
 
-void Etb::toAttach(int id, Bateria batt){
+Bateria Etb::toAttach(int id, Bateria batt){
     batt.setHost(0);
     cp[id].setBattery(batt.getUid());
+    return batt;
 }
 
-void Etb::chargeBatt(int id, Bateria batt){
+Bateria Etb::chargeBatt(int id, Bateria batt){
     if (batt.getSoc() < 100) {
         batt.calculaSoc(0);
         cp[id].setState(true);
     } else {
         cp[id].setState(false);
     }
+    return batt;
 }
 
-void Etb::toDetach(int id, Bateria batt){
+Bateria Etb::toDetach(int id, Bateria batt){
     batt.setHost(-1);
     cp[id].setBattery(0);
+    return batt;
 }
 
 int Etb::countBatt(){

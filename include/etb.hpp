@@ -20,9 +20,9 @@ public:
     void setUid();
     long int getUid();
     Cp getCp(int value);
-    void toAttach(int id, Bateria batt);
-    void chargeBatt(int id, Bateria batt);
-    void toDetach(int id, Bateria batt);
+    Bateria toAttach(int id, Bateria batt);
+    Bateria chargeBatt(int id, Bateria batt);
+    Bateria toDetach(int id, Bateria batt);
     int countBatt();
     int countCharg();
     int timeToCharge(Bateria batt);

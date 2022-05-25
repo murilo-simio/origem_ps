@@ -1,4 +1,5 @@
 #include "../../include/bateria.hpp"
+#include <iostream>
 
 Bateria::Bateria() : state(false){
     setUid();
@@ -16,8 +17,13 @@ Bateria::Bateria(float carga, int local) : soc(carga){
     setHost(local);
 }
 
-void Bateria::setState(){
-    state = !state;
+void Bateria::setState(bool x){
+    state = x;
+    if( getHost() == -1){
+        state = false;
+    }else {
+        state = true;
+    }
 }
 
 bool Bateria::getState(){
@@ -25,10 +31,6 @@ bool Bateria::getState(){
 }
 
 void Bateria::setHost(int moto){
-    if(!getState())
-        if(moto > -1) setState();
-    if(getState())
-        if(moto < 0) setState();
     host = moto;
 }
 
@@ -47,8 +49,8 @@ long long int Bateria::getUid(){
 void Bateria::setSoc(float value){
     if (value < 0) {
         soc = 0;
-    }else if (soc > 100){
-        soc = 100;
+    }else if (soc > 100.0){
+        soc = 100.000000;
     }else{
         soc = value;
     }
@@ -61,8 +63,8 @@ float Bateria::getSoc(){
 float Bateria::calculaSoc(int host, float veloc){
     float x = getSoc();
     if(host == 0){
-        x += 0.05;
-    }else if(veloc){
+        x = (float) (x + 0.05);
+    }else if(veloc > 0){
         x = x - 0.01 - (pow((veloc/MAX_SPEED),2) * 0.05);
     }else{
         x -= 0.01;
