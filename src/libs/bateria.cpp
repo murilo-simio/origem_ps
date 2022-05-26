@@ -38,8 +38,12 @@ int Bateria::getHost(){
     return host;
 }
 
-void Bateria::setUid(){
-    uid = rand() % 100000 + 1;
+void Bateria::setUid(long long int a){
+    if (a) {
+        uid = a;
+    } else {
+        uid = rand() % 100000 + 1;
+    }
 }
 
 long long int Bateria::getUid(){
@@ -69,6 +73,7 @@ float Bateria::calculaSoc(int host, float veloc){
     }else{
         x -= 0.01;
     }
+    if (x > 100) x = 100;
     setSoc(x);
     return getSoc();
 }

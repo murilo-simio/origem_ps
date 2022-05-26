@@ -20,7 +20,7 @@ public:
     bool getState();
     void setHost(int moto);
     int getHost();
-    void setUid();
+    void setUid(long long int a = 0);
     long long int getUid();
     void setSoc(float value);
     float getSoc();

@@ -55,3 +55,7 @@ float Moto::calculaVel(bool acell, int seg){
     setSpeed(veloc);
     return getSpeed();
 }
+
+Bateria Moto::getBateria(){
+    return bateria;
+}

@@ -12,6 +12,8 @@ using namespace std;
 void printMotoInfo(Moto motoI);
 void printEtbInfo(Cp ponto, int id, Bateria batt);
 Moto motoUpdate(Moto motoI, bool accel);
+Bateria trocaBaterias(Moto velha, Etb local);
+Moto colocaBateria(Moto motoI, Bateria batt);
 array <Bateria,8> etbInfo(array <Bateria,8> batt, Etb ponto);
 
 int timer = 0;
@@ -27,13 +29,13 @@ int main(){
     baterias[0].setSoc(100);
     baterias[1].setSoc(100);
     baterias[2].setSoc(100);
-    baterias[4].setSoc(70);
-    baterias[5].setSoc(60);
-    baterias[6].setSoc(50);
+    baterias[3].setSoc(70);
+    baterias[4].setSoc(60);
+    baterias[5].setSoc(50);
 
     baterias = etbInfo(baterias, station);
 
-    for (int i=0;i<7;i++){
+    for (int i=0;i<6;i++){
         baterias[i] = station.toAttach(i, baterias[i]);
         baterias[i] = station.chargeBatt(i, baterias[i]);
     }
@@ -76,7 +78,32 @@ int main(){
         baterias = etbInfo(baterias, station);
     }
 
+    // Rotina 5 - Troca de Bateria
+    baterias[6] = trocaBaterias(moto, station);
+    baterias[6] = station.toAttach(6, baterias[6]);
+
+    moto = colocaBateria(moto, baterias[0]);
+    baterias[0] = station.toDetach(0, baterias[0]);
+
+    timer=10;
+    printMotoInfo(moto);
+    etbInfo(baterias, station);
+
     return 0;
+}
+
+Bateria trocaBaterias(Moto velha, Etb local){
+    Bateria batt;
+    batt.setSoc(velha.getSoc());
+    batt.setUid(velha.getUid());
+    return batt;
+}
+
+Moto colocaBateria(Moto motoI, Bateria batt){
+    motoI.setSoc(batt.getSoc());
+    motoI.setHost(1);
+    motoI.setUid(batt.getUid());
+    return motoI;
 }
 
 void printMotoInfo(Moto motoI){
@@ -106,7 +133,6 @@ array <Bateria,8> etbInfo(array <Bateria,8> batt, Etb ponto){
             printEtbInfo(ponto.getCp(i), i, batt[i]);
         }
     }
-    cout << "---------------------------------------" << endl;
     return batt;
 }
 

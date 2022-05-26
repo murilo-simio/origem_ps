@@ -21,12 +21,13 @@ Cp Etb::getCp(int value){
 
 Bateria Etb::toAttach(int id, Bateria batt){
     batt.setHost(0);
+    cp[id].setState(true);
     cp[id].setBattery(batt.getUid());
     return batt;
 }
 
 Bateria Etb::chargeBatt(int id, Bateria batt){
-    if (batt.getSoc() < 100) {
+    if (batt.getSoc() < 100 && cp[id].getState() != false) {
         batt.calculaSoc(0);
         cp[id].setState(true);
     } else {
@@ -37,6 +38,7 @@ Bateria Etb::chargeBatt(int id, Bateria batt){
 
 Bateria Etb::toDetach(int id, Bateria batt){
     batt.setHost(-1);
+    batt.setSoc(0);
     cp[id].setBattery(0);
     return batt;
 }

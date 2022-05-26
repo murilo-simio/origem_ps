@@ -24,6 +24,8 @@ public:
     void setSpeed(float value);
     float getSpeed();
     float calculaVel(bool acell, int seg = 1);
+    Bateria getBateria();
+    void setBateria(Bateria batt);
 };
 
 #endif // MOTO_HPP
