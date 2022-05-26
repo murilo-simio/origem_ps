@@ -20,6 +20,7 @@ int timer = 0;
 
 int main(){
 
+    // Rotina 0
     Moto moto = Moto(85.00);
 
     Etb station = Etb();
