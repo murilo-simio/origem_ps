@@ -8,7 +8,7 @@ Murilo Simionato Arnemann
 Cria uma moto com 85% de bateria, uma ETB com 7 posições e 8 baterias. Define a carga de 6 baterias e as conecta no ETB.
 
 ### Rotina 1-4
-Representam os ciclos de aceleração e freio da moto. A cada 1s recalcula a velocidade da moto e com ela gera uma nova SoC para a bateria da moto. Também calcula os valores das cargas das baterias conectadas no SoC.
+Representam os ciclos de aceleração e freio da moto. A cada 1s recalcula a velocidade da moto e com ela gera uma nova SoC para a bateria da moto. Também calcula os valores das cargas das baterias conectadas no ETB.
 
 A cada 10s imprime na tela algumas informações da moto (placa, velocidade, carga e uid da bateria) e também as informações sobre os CP's do ETB, contendo o id, a carga da bateria e se ela esta carregando ou não.
 
